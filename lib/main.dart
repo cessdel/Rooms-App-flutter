@@ -1,8 +1,16 @@
 import 'dart:async';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:rooms_app/services/read_values.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
@@ -10,6 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: SplashScreen(),
     );
   }
@@ -47,13 +56,21 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-class HolaScreen extends StatelessWidget {
+class HolaScreen extends StatefulWidget {
+  @override
+  State<HolaScreen> createState() => _HolaScreenState();
+}
+
+class _HolaScreenState extends State<HolaScreen> {
+  // Values valores = Values('', '', '', ''); //Constructor de clase encapsulada
+  String luz = '', temp = '', hum = '', ruido = '';
+
+  final Values values = Values();
+
   @override
   Widget build(BuildContext context) {
-
-  final currentTime = DateTime.now();
+    final currentTime = DateTime.now();
     final formattedTime = DateFormat('hh:mm a').format(currentTime);
-
 
     return Scaffold(
       backgroundColor:
@@ -92,7 +109,7 @@ class HolaScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  padding: EdgeInsets.all(16),
+                  padding: EdgeInsets.all(0),
                   child: Column(
                     children: [
                       Text(
@@ -197,10 +214,9 @@ class HolaScreen extends StatelessWidget {
                       Text(
                         formattedTime,
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
-                          color: Colors.white
-                        ),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,
+                            color: Colors.white),
                       ),
                     ],
                   ),
@@ -220,7 +236,7 @@ class HolaScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
+                children: <Widget>[
                   Text(
                     '¡Buen día!',
                     style: TextStyle(
@@ -260,12 +276,25 @@ class HolaScreen extends StatelessWidget {
                                 children: [
                                   Row(
                                     children: [
-                                      Text(
-                                        '34',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize:
-                                                40), // Ajusta el tamaño de la fuente a 25
+                                      StreamBuilder<String>(
+                                        stream:
+                                            values.streamValues('DHT11_Temp'),
+                                        builder: (context, snapshot) {
+                                          if (snapshot.connectionState ==
+                                              ConnectionState.waiting) {
+                                            return CircularProgressIndicator();
+                                          } else if (snapshot.hasError) {
+                                            return Text(
+                                                'Error: ${snapshot.error}');
+                                          } else {
+                                            return Text(
+                                              snapshot.data.toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 40),
+                                            );
+                                          }
+                                        },
                                       ),
                                       Text(
                                         '°C',
@@ -307,12 +336,25 @@ class HolaScreen extends StatelessWidget {
                                 children: [
                                   Row(
                                     children: [
-                                      Text(
-                                        '30',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize:
-                                                40), // Ajusta el tamaño de la fuente a 25
+                                      StreamBuilder<String>(
+                                        stream:
+                                            values.streamValues('DHT11_Hum'),
+                                        builder: (context, snapshot) {
+                                          if (snapshot.connectionState ==
+                                              ConnectionState.waiting) {
+                                            return CircularProgressIndicator();
+                                          } else if (snapshot.hasError) {
+                                            return Text(
+                                                'Error: ${snapshot.error}');
+                                          } else {
+                                            return Text(
+                                              snapshot.data.toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 40),
+                                            );
+                                          }
+                                        },
                                       ),
                                       Text(
                                         ' %',
@@ -361,12 +403,24 @@ class HolaScreen extends StatelessWidget {
                                 children: [
                                   Row(
                                     children: [
-                                      Text(
-                                        '67',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize:
-                                                40), // Ajusta el tamaño de la fuente a 25
+                                      StreamBuilder<String>(
+                                        stream: values.streamValues('KY-038'),
+                                        builder: (context, snapshot) {
+                                          if (snapshot.connectionState ==
+                                              ConnectionState.waiting) {
+                                            return CircularProgressIndicator();
+                                          } else if (snapshot.hasError) {
+                                            return Text(
+                                                'Error: ${snapshot.error}');
+                                          } else {
+                                            return Text(
+                                              snapshot.data.toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 40),
+                                            );
+                                          }
+                                        },
                                       ),
                                       Text(
                                         'dB',
@@ -408,12 +462,24 @@ class HolaScreen extends StatelessWidget {
                                 children: [
                                   Row(
                                     children: [
-                                      Text(
-                                        '89',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize:
-                                                40), // Ajusta el tamaño de la fuente a 25
+                                      StreamBuilder<String>(
+                                        stream: values.streamValues('LDR'),
+                                        builder: (context, snapshot) {
+                                          if (snapshot.connectionState ==
+                                              ConnectionState.waiting) {
+                                            return CircularProgressIndicator();
+                                          } else if (snapshot.hasError) {
+                                            return Text(
+                                                'Error: ${snapshot.error}');
+                                          } else {
+                                            return Text(
+                                              snapshot.data.toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 40),
+                                            );
+                                          }
+                                        },
                                       ),
                                       Text(
                                         ' lm',

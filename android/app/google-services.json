@@ -1,0 +1,119 @@
+{
+  "project_info": {
+    "project_number": "798938299086",
+    "firebase_url": "https://pruebas-iot-a58f4-default-rtdb.firebaseio.com",
+    "project_id": "pruebas-iot-a58f4",
+    "storage_bucket": "pruebas-iot-a58f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798938299086:android:e3cb9ffcf2eb0887fc2e9f",
+        "android_client_info": {
+          "package_name": "com.example.rooms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "798938299086-snsmmlgq7ergl1kglg8o4pak3g3j06av.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjWhLVTnwsLCR18DNlIYOefn9tmH5dl0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "798938299086-snsmmlgq7ergl1kglg8o4pak3g3j06av.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "798938299086-kn0oke2j4qm69900vpdsus787fcqfcri.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.rooms"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798938299086:android:59103e5107bd20e0fc2e9f",
+        "android_client_info": {
+          "package_name": "com.example.rooms_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "798938299086-snsmmlgq7ergl1kglg8o4pak3g3j06av.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjWhLVTnwsLCR18DNlIYOefn9tmH5dl0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "798938299086-snsmmlgq7ergl1kglg8o4pak3g3j06av.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "798938299086-kn0oke2j4qm69900vpdsus787fcqfcri.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.rooms"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798938299086:android:095c49a9f70c2870fc2e9f",
+        "android_client_info": {
+          "package_name": "com.example.roomsv2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "798938299086-snsmmlgq7ergl1kglg8o4pak3g3j06av.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjWhLVTnwsLCR18DNlIYOefn9tmH5dl0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "798938299086-snsmmlgq7ergl1kglg8o4pak3g3j06av.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "798938299086-kn0oke2j4qm69900vpdsus787fcqfcri.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.rooms"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
